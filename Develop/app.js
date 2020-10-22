@@ -109,9 +109,10 @@ function managerQuestions() {
 function initialQuestions () {
 
     var roleChoices=[]
-    roleChoices.push("Add an Intern");
-    roleChoices.push("Add an Engineer")
-    roleChoices.push("add a Manager");
+    roleChoices.push("Add Intern");
+    roleChoices.push("Add Engineer")
+    roleChoices.push("Add Manager");
+    roleChoices.push("I'm Finished");
 
     inquirer.prompt([{
         message:"What Employee would you like to add?",
@@ -131,6 +132,11 @@ function initialQuestions () {
             }
             case "Add Intern":{
                 internQuestions();
+                break;
+            }
+            case "I'm Finished":{
+                fs.writeFile(employeesArr);
+                break;
             }
         }
     })
