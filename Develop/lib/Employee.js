@@ -25,9 +25,9 @@ class Employee {
 
 }
 
-var ob = new Employee("Justin", 1, "j@j.com");
-var ob2 = new Employee("Kyle", 2, "k@k.com");
-console.log(ob, ob2);
-ob.getName();
+// var ob = new Employee("Justin", 1, "j@j.com");
+// var ob2 = new Employee("Kyle", 2, "k@k.com");
+// console.log(ob, ob2);
+// ob.getName();
 
 module.exports = Employee;
