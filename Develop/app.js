@@ -10,6 +10,82 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+var employeesArr = [] // Empty array that will save all team members 
+
+//Inquirer prompts to gather user input - worked with Benjamin Dionysus, Matt Hiatt, and Steve Kavuu on structure
+function managerQuestions() {
+    inquirer.prompt(
+        [{
+
+            message: "Name:",
+            name: "name:",
+            type: 'input',
+        },
+        {
+            message: "Office Number:",
+            name: "officeNumber",
+            type: 'input',
+        },
+        {
+            message: "Email:",
+            name: "email",
+            type: 'input',
+        }])
+        .then(function (answers) {
+            employeesArr.push(new Manager(answers.name, employeesArr.length, answers.email, answers.officeNumber));
+            initialQuestions();
+        });
+
+    function engineerQuestions() {
+        inquirer.prompt(
+            [{
+
+                message: "Name:",
+                name: "name",
+                type: 'input',
+            },
+            {
+                message: "GitHub Username:",
+                name: "github",
+                type: 'input',
+            },
+            {
+                message: "Email:",
+                name: "email",
+                type: 'input',
+            }])
+            .then(function (answers) {
+                employeesArr.push(new Engineer(answers.name, employeesArr.length, answers.email, answers.github));
+                initialQuestions();
+            });
+
+        function internQuestions() {
+            inquirer.prompt(
+                [{
+
+                    message: "Name:",
+                    name: "name:",
+                    type: 'input',
+                },
+                {
+                    message: "Name of school:",
+                    name: "school",
+                    type: 'input',
+                },
+                {
+                    message: "Email:",
+                    name: "email",
+                    type: 'input',
+                }])
+                .then(function (answers) {
+                    employeesArr.push(new Intern(answers.name, employeesArr.length, answers.email, answers.school));
+                    initialQuestions();
+                });
+
+const initialQuestions = [
+    {}
+]
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
